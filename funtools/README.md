@@ -9,7 +9,7 @@
 - 📊 Data visualization with `charttools` (based on `matplotlib`)
 - 📦 One-click executable packaging with `packtools` (using PyInstaller)
 - 🎮 Game utilities with `gametools` *(coming soon — needs the `imp` module)*
-
+- 🖼 Image editor with `imagetools`
 ## 📦 Included Modules
 
 - `pygame`
@@ -18,6 +18,7 @@
 - `tkinter`
 - `os`
 - `imp` *(for compatibility support in some tools)*
+- `pillow`
 
 ## Developer
 
@@ -30,4 +31,6 @@ At just **11 years old**, I'm already creating Python libraries! 🧠🔥
   Initial version with support for:
   - Basic GUI creation  
   - Captcha image generation  
-  - Data chart plotting  
+  - Data chart plotting
+- **v0.2 - Apr 13, 2025**
+  - New tool: Imagetools! 🔥
