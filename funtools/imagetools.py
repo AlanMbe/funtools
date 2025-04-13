@@ -2,31 +2,31 @@ from PIL import Image, ImageEnhance, ImageFilter, ImageDraw, ImageFont
 
 class ImageEditor:
     def __init__(self, image_path):
-        """初始化图像编辑器"""
+        """Initialize the image editor with the image at the given path"""
         self.image = Image.open(image_path)
     
     def save(self, output_path, format=None):
-        """保存图像到指定路径，可以指定保存格式"""
+        """Save the image to the specified path, optionally specifying the format"""
         self.image.save(output_path, format=format)
     
     def show(self):
-        """显示图像"""
+        """Display the image"""
         self.image.show()
     
     def resize(self, width, height):
-        """调整图像大小"""
+        """Resize the image to the specified width and height"""
         self.image = self.image.resize((width, height))
     
     def rotate(self, angle):
-        """旋转图像"""
+        """Rotate the image by the specified angle"""
         self.image = self.image.rotate(angle)
     
     def crop(self, left, top, right, bottom):
-        """裁剪图像"""
+        """Crop the image using the specified coordinates"""
         self.image = self.image.crop((left, top, right, bottom))
     
     def apply_filter(self, filter_type):
-        """应用滤镜"""
+        """Apply a filter to the image (e.g., blur, contour, or detail)"""
         if filter_type == 'BLUR':
             self.image = self.image.filter(ImageFilter.BLUR)
         elif filter_type == 'CONTOUR':
@@ -35,20 +35,20 @@ class ImageEditor:
             self.image = self.image.filter(ImageFilter.DETAIL)
     
     def enhance(self, factor):
-        """增强图像"""
+        """Enhance the contrast of the image by the given factor"""
         enhancer = ImageEnhance.Contrast(self.image)
         self.image = enhancer.enhance(factor)
     
     def convert_format(self, output_path, format):
-        """转换图像格式（JPEG, PNG, BMP等）"""
+        """Convert the image to a specified format (JPEG, PNG, BMP, etc.)"""
         self.image.save(output_path, format=format)
     
     def create_thumbnail(self, size=(128, 128)):
-        """生成缩略图"""
+        """Create a thumbnail of the image with the specified size"""
         self.image.thumbnail(size)
     
     def add_text(self, text, position=(10, 10), font_size=30, color=(255, 255, 255)):
-        """添加文字到图像"""
+        """Add text to the image at the specified position with given font size and color"""
         draw = ImageDraw.Draw(self.image)
         try:
             font = ImageFont.truetype("arial.ttf", font_size)
@@ -57,11 +57,11 @@ class ImageEditor:
         draw.text(position, text, fill=color, font=font)
     
     def add_watermark(self, watermark_text, position=(10, 10), font_size=30, color=(255, 255, 255)):
-        """添加水印文字到图像"""
+        """Add a watermark to the image at the specified position"""
         self.add_text(watermark_text, position, font_size, color)
     
     def merge_images(self, image_paths, layout='horizontal'):
-        """图像合并（横向或纵向拼接）"""
+        """Merge multiple images either horizontally or vertically"""
         images = [Image.open(img_path) for img_path in image_paths]
         widths, heights = zip(*(i.size for i in images))
         
